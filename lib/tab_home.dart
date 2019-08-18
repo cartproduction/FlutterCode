@@ -101,8 +101,6 @@ class FirstPage extends StatelessWidget {
   }
 }
 
-
-
 Future<ProductResponse> getProducts() async {
   String url = "http://173.212.212.137:5000/api/categories/products/list";
   final response =

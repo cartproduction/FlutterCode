@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
+import 'dart:io';
+
 class SecondPage extends StatelessWidget {
   const SecondPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
-    void _select(Choice choice) {
-      // Causes the app to rebuild with the new _selectedChoice.
-
-    }
 
     return Scaffold(
       appBar: AppBar(
@@ -22,7 +19,12 @@ class SecondPage extends StatelessWidget {
             color: Colors.black,
             icon: Icon(choices[0].icon),
             onPressed: () {
-              _select(choices[0]);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  //builder: (context) => controller,
+                ),
+              );
             },
           ),
 
@@ -61,7 +63,12 @@ class SecondPage extends StatelessWidget {
                   ),
                   child: Center(child: Text("Ürün Ekle",style: TextStyle(color: Colors.white)),) // button text
               ),onTap:(){
-            print("you clicked my");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      //builder: (context) => MyApp(),
+                    ),
+                  );
           }
           )
         ],
