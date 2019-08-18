@@ -21,38 +21,47 @@ class DetailScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         title: Text(todo.name,style: TextStyle(color: Colors.black)),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Stack(
 
-          children: <Widget>[
-            Image.network("http://dhsv9nci6oo42.cloudfront.net"+ todo.photo,height: 150,),
+        body: SafeArea(
+            child: Column(
+                children: <Widget>[
+                  Image.network("http://dhsv9nci6oo42.cloudfront.net"+ todo.photo, width: MediaQuery.of(context).size.width, height: MediaQuery.of(context).size.height/4,fit: BoxFit.fitWidth,),
+                  SizedBox(height: 15),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child:Text(todo.name,style: Theme.of(context).textTheme.title.copyWith(color: Colors.black)),
+                  ),
+                  SizedBox(height: 15),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child:Text(todo.description),
+                  ),
+                  SizedBox(height: 15),
+                  Expanded(
+                      child: ListView.builder(
+                        itemCount: todo.productResponses.length,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                              leading: Image.network("http://dhsv9nci6oo42.cloudfront.net"+ todo.productResponses.elementAt(index).icon),
+                              title: Text(todo.productResponses.elementAt(index).name),
+                              subtitle: Text('Fiyat: ${todo.productResponses.elementAt(index).price} TL'),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Picker(),
+                                  ),
+                                );
+                              }
+                          );
+                        },
 
-            Center(child:Text(todo.name)),
-            Center(child:Text(todo.description)),
-            ListView.builder(
-                itemCount: todo.productResponses.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    leading: Image.network("http://dhsv9nci6oo42.cloudfront.net"+ todo.productResponses.elementAt(index).icon),
-                    title: Text(todo.productResponses.elementAt(index).name),
-                    subtitle: Text('Fiyat: ${todo.productResponses.elementAt(index).price} TL'),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Picker(),
-                          ),
-                        );
-                      }
-                  );
-                },
-
+                      )
+                  ),
+                ]
             )
-          ],
-        ),
+        )
 
-      ),
     );
   }
 }
