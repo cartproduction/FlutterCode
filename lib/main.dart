@@ -13,7 +13,6 @@ import 'package:flutter/material.dart';
 import 'tab_home.dart';
 import 'tab_basket.dart';
 import 'tab_menu.dart';
-import 'tab_homenew.dart';
 
 void main() => runApp(MyApp());
 
