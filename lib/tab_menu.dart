@@ -6,27 +6,49 @@ class ThirdPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    // ignore: unused_element
-    void _select(Choice choice) {
-      // Causes the app to rebuild with the new _selectedChoice.
-
-    }
 
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          centerTitle: true,
-          title: Text("Menü",style: TextStyle(color: Colors.black)),
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.black, //change your color here
         ),
-      body: ListView.builder(itemBuilder: (context, index) {
-        return ListTile(
-          title: Text('Siparişlerim'),
-        );
-      }),
+        backgroundColor: Colors.white,
+        title: Text("Menü",style: TextStyle(color: Colors.black)),
+      ),
+      body: SafeArea(
+          child: Column(
+              children: <Widget>[
+                Image.asset('assets/appimage.jpeg', width: MediaQuery.of(context).size.width, height: MediaQuery.of(context).size.height/4,fit: BoxFit.fitWidth,),
+                SizedBox(height: 15),
+                Center(child:Text("Hoşgeldin , Serhat",style: Theme.of(context).textTheme.title.copyWith(color: Colors.blueAccent))),
+                SizedBox(height: 15),
+                Expanded(
+                    child: ListView.builder(
+                      itemCount: choices.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                            leading: Icon(choices.elementAt(index).icon),
+                            title: Text(choices.elementAt(index).title),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  //builder: (context) => Picker(),
+                                ),
+                              );
+                            }
+                        );
+                      },
 
+                    )
+                ),
+              ]
+          )
+      )
     );
   }
 }
+
 class Choice {
   const Choice({this.title, this.icon});
 
@@ -35,12 +57,10 @@ class Choice {
 }
 
 const List<Choice> choices = const <Choice>[
-  const Choice(title: 'Car', icon: Icons.add),
-  const Choice(title: 'Bicycle', icon: Icons.directions_bike),
-  const Choice(title: 'Boat', icon: Icons.directions_boat),
-  const Choice(title: 'Bus', icon: Icons.directions_bus),
-  const Choice(title: 'Train', icon: Icons.directions_railway),
-  const Choice(title: 'Walk', icon: Icons.directions_walk),
+  const Choice(title: 'Siparişlerim', icon: Icons.shopping_basket),
+  const Choice(title: 'Adreslerim', icon: Icons.place),
+  const Choice(title: 'Profilimi Düzenle', icon: Icons.edit),
+  const Choice(title: 'Şifre Değiştir', icon: Icons.vpn_key),
 ];
 
 class ChoiceCard extends StatelessWidget {
