@@ -13,6 +13,7 @@ class ThirdPage extends StatelessWidget {
           color: Colors.black, //change your color here
         ),
         backgroundColor: Colors.white,
+        centerTitle: true,
         title: Text("Menü",style: TextStyle(color: Colors.black)),
       ),
       body: SafeArea(
