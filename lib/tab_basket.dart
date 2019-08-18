@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'main.dart';
 class SecondPage extends StatelessWidget {
   const SecondPage({Key key}) : super(key: key);
 
@@ -25,6 +25,7 @@ class SecondPage extends StatelessWidget {
               _select(choices[0]);
             },
           ),
+
           // overflow menu
           /*PopupMenuButton<Choice>(
               onSelected: _select,
@@ -41,7 +42,34 @@ class SecondPage extends StatelessWidget {
       ),
       body: Align(
         alignment: Alignment.center,
-        child: Image.asset('assets/cart.png', height: 100,width: 100,fit: BoxFit.cover,),
+        child: Center(child : Column(children: <Widget>[
+          Image.asset('assets/cart.png', height: 100,width: 100,fit: BoxFit.cover,),
+          SizedBox(height: 15),
+          Text("Henüz sepetinizde ürün bulunmamaktadır",style: TextStyle(color: Colors.black)),
+          SizedBox(height: 15),
+          GestureDetector(
+              child: Container(
+                  width:MediaQuery.of(context).size.width-60,
+                  height: 45,
+                  decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      image: DecorationImage(
+                          image:AssetImage("assets/butonback.png"),
+                          fit:BoxFit.fill
+                      ),
+
+                  ),
+                  child: Center(child: Text("Ürün Ekle",style: TextStyle(color: Colors.white)),) // button text
+              ),onTap:(){
+            print("you clicked my");
+          }
+          )
+        ],
+        mainAxisAlignment: MainAxisAlignment.center,)
+        )
+
+
+
       )
 
     );
