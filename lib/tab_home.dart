@@ -76,24 +76,30 @@ class FirstPage extends StatelessWidget {
                 ),
               );
             },
-            child: Stack(
-              alignment: AlignmentDirectional.centerStart ,
-              children: <Widget>[
+            child: Padding(
+                padding: EdgeInsets.all(3.0),
+                child : Stack(
+                  alignment: AlignmentDirectional.centerStart ,
+                  children: <Widget>[
 
-                CachedNetworkImage(
-                  imageUrl: "http://dhsv9nci6oo42.cloudfront.net"+ project.photo,
-                  placeholder: (context, url) => Center(child: Image.asset('assets/gallery.png',height: MediaQuery.of(context).size.width/3,width: MediaQuery.of(context).size.width/3,)),
-                  errorWidget: (context, url, error) => new Icon(Icons.error),
-                ),
-                Image.asset("assets/proback.png",alignment: AlignmentDirectional.centerStart,width: MediaQuery.of(context).size.width/3+35,),
-                Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child : Text(project.name,style: Theme.of(context).textTheme.title.copyWith(color: Colors.white))
+                    CachedNetworkImage(
+                      imageUrl: "http://dhsv9nci6oo42.cloudfront.net"+ project.photo,
+                      placeholder: (context, url) => Center(child: Image.asset('assets/gallery.png',height: MediaQuery.of(context).size.width/3,width: MediaQuery.of(context).size.width/3,)),
+                      errorWidget: (context, url, error) => new Icon(Icons.error),
+                    ),
+                    Opacity(
+                      opacity: 0.7,
+                      child: Image.asset("assets/proback.png",alignment: AlignmentDirectional.centerStart,width: MediaQuery.of(context).size.width/3+35,),
+                    ),
+                    Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child : Text(project.name,style: Theme.of(context).textTheme.title.copyWith(color: Colors.white))
+                    )
+
+
+
+                  ],
                 )
-
-
-
-              ],
             )
         );
       },
